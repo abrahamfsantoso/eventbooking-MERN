@@ -32,6 +32,11 @@ app.use(express.json());
 const graphQlSchema = require('./graphql/schema/index');
 const graphQlResolvers = require('./graphql/resolvers/index');
 
+// Import middleware
+const isAuth = require('./middleware/is-auth');
+
+app.use(isAuth);
+
 app.use(
   '/graphql',
   graphqlHTTP({
